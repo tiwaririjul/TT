@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Happy Anniversary Trisha — our love story" />
+  <title>Happy Anniversary, Trisha ❤️</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💜</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- Aurora Background -->
+  <div class="aurora"></div>
+
+  <!-- Floating Particles -->
+  <div class="particles-container"></div>
+
+  <!-- Hearts Canvas -->
+  <canvas id="hearts-canvas"></canvas>
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="assets/music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- ========== START SCREEN ========== -->
+  <div class="start-screen" id="start-screen">
+    <div class="start-content">
+      <div class="start-emoji">💜</div>
+      <p class="start-text">I've got something<br>for you, Trisha…</p>
+      <button class="start-button" id="start-btn">
+        Tap here <span class="heart-icon">❤️</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ========== LOADING SCREEN ========== -->
+  <div class="loading-screen" id="loading-screen">
+    <div class="loading-content">
+      <div class="loading-emoji">💜</div>
+      <p class="loading-text">Making it special for you…</p>
+      <div class="loading-bar-wrap">
+        <div class="loading-bar" id="loading-bar"></div>
+      </div>
+      <p class="loading-percent" id="loading-percent">0%</p>
+    </div>
+  </div>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <div class="main-content" id="main-content">
+
+    <!-- ═══════ HERO ═══════ -->
+    <section class="story-section hero-section" id="section-hero">
+      <div class="hero-card">
+        <div class="hero-photo-frame">
+          <img src="assets/images/we_основной.png" alt="Us" class="hero-photo" loading="eager" />
+          <div class="hero-photo-border"></div>
+        </div>
+        <h1 class="hero-title">Our Story 💜</h1>
+        <p class="hero-subtitle">Three years of craving… and then forever started.</p>
+      </div>
+    </section>
+
+    <!-- ═══════ How it began ═══════ -->
+    <section class="story-section" id="section-beginning">
+      <div class="story-card">
+        <div class="section-emoji">🌸</div>
+        <h2 class="section-title">Remember how it all started…</h2>
+        <p class="section-text">
+          We didn’t meet in a cafe. We didn’t bump into each other on a street.
+          We met online — and somehow, that felt more real than anything.
+          On <em>16th September 2023</em>, I proposed to you… and I was scared.
+          Properly scared. But you said yes. And from that moment,
+          my world quietly changed. That “yes” still lives in my heart.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════ Photo grid 1 ═══════ -->
+    <section class="story-section photo-grid-section" id="section-grid1">
+      <div class="photo-grid-container">
+        <h2 class="photo-grid-title">Our first little universe ✨</h2>
+        <div class="photo-grid grid-3">
+          <div class="photo-grid-item reveal-item" data-delay="0">
+            <img src="assets/images/1752901043937.jpg" alt="Our moment" loading="lazy" />
+            <div class="photo-shine"></div>
+          </div>
+          <div class="photo-grid-item reveal-item" data-delay="150">
+            <img src="assets/images/1stmoment.jpg" alt="Our moment" loading="lazy" />
+            <div class="photo-shine"></div>
+          </div>
+          <div class="photo-grid-item reveal-item" data-delay="300">
+            <img src="assets/images/1736509164915.jpg" alt="Our moment" loading="lazy" />
+            <div class="photo-shine"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ The long wait ═══════ -->
+    <section class="story-section" id="section-changes">
+      <div class="story-card">
+        <div class="section-emoji">🦋</div>
+        <h2 class="section-title">Those three years… we only had a screen</h2>
+        <p class="section-text">
+          For three long years, we lived on video calls — wishing, waiting, craving.
+          Every “good night” felt incomplete. Every “I miss you” felt louder.
+          And then it happened — because of you, Trisha.
+          You made <em>“someday”</em> turn into <em>“today”</em>.
+          That wait was hard… but you were always worth it.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════ Video 1 ═══════ -->
+    <section class="story-section video-section" id="section-video1">
+      <div class="video-card reveal-item">
+        <h2 class="video-title">Outside the screen… finally us 🌿</h2>
+        <div class="video-wrapper">
+          <video src="assets/video/meet2.mp4" muted loop playsinline preload="metadata" class="story-video" data-autoplay></video>
+          <div class="video-play-overlay" data-target="video">
+            <span class="play-icon">▶</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ Photo grid 2 ═══════ -->
+    <section class="story-section photo-grid-section" id="section-grid2">
+      <div class="photo-grid-container">
+        <h2 class="photo-grid-title">Moments that feel like home 🥰</h2>
+        <div class="photo-grid grid-4">
+          <div class="photo-grid-item reveal-item" data-delay="0">
+            <img src="assets/images/home1.jpg" alt="Our moment" loading="lazy" />
+            <div class="photo-shine"></div>
+          </div>
+          <div class="photo-grid-item reveal-item" data-delay="100">
+            <img src="assets/images/home2.jpg" alt="Our moment" loading="lazy" />
+            <div class="photo-shine"></div>
+          </div>
+          <div class="photo-grid-item reveal-item" data-delay="200">
+            <img src="assets/images/home3.jpg" alt="Our moment" loading="lazy" />
+            <div class="photo-shine"></div>
+          </div>
+          <div class="photo-grid-item reveal-item" data-delay="300">
+            <img src="assets/images/home4.jpg" alt="Our moment" loading="lazy" />
+            <div class="photo-shine"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ First meeting ═══════ -->
+    <section class="story-section" id="section-first-meet">
+      <div class="story-card">
+        <div class="section-emoji">💻</div>
+        <h2 class="section-title">And then we finally met…</h2>
+        <p class="section-text">
+          Our first time together, you chose a movie. We were lying on the bed,
+          laptop open… But honestly? My concentration was <em>not</em> on that movie at all.
+          I kept slowly, slowly moving closer — trying to hug you —
+          and you got all shy. That little shy moment?
+          Still makes me smile like an idiot.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════ Video 2 ═══════ -->
+    <section class="story-section video-section" id="section-video2">
+      <div class="video-card reveal-item">
+        <h2 class="video-title">Another day that felt like magic 🌸</h2>
+        <div class="video-wrapper">
+          <video src="assets/video/meet3.mp4" muted loop playsinline preload="metadata" class="story-video" data-autoplay></video>
+          <div class="video-play-overlay" data-target="video">
+            <span class="play-icon">▶</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ Photo grid 3 ═══════ -->
+    <section class="story-section photo-grid-section" id="section-grid3">
+      <div class="photo-grid-container">
+        <h2 class="photo-grid-title">Soft memories, loud heartbeats 💕</h2>
+        <div class="photo-grid grid-3">
+          <div class="photo-grid-item reveal-item" data-delay="0">
+            <img src="assets/images/another1.jpg" alt="Our moment" loading="lazy" />
+            <div class="photo-shine"></div>
+          </div>
+          <div class="photo-grid-item reveal-item" data-delay="150">
+            <img src="assets/images/another2.jpg" alt="Our moment" loading="lazy" />
+            <div class="photo-shine"></div>
+          </div>
+          <div class="photo-grid-item reveal-item" data-delay="300">
+            <img src="assets/images/another3.jpg" alt="Our moment" loading="lazy" />
+            <div class="photo-shine"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ Theatre day ═══════ -->
+    <section class="story-section" id="section-theatre">
+      <div class="story-card">
+        <div class="section-emoji">🎬</div>
+        <h2 class="section-title">That day in the theatre…</h2>
+        <p class="section-text">
+          I say every day with you is special — and it’s true.
+          But that day in the theatre? That one is locked forever.
+          While the movie played… we started kissing.
+          Time paused. The world blurred.
+          And I knew — <em>this memory is mine for life</em>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════ What she means ═══════ -->
+    <section class="story-section" id="section-meaning">
+      <div class="story-card">
+        <div class="section-emoji">💫</div>
+        <h2 class="section-title">You became more than “girlfriend”…</h2>
+        <p class="section-text">
+          You’re smart. You’re intelligent. You’re sensitive —
+          my little crying baby with a big heart and a thousand emotions.
+          And you love me… so loudly, so softly, so completely.
+          I love when you act cute without even knowing you’re cute.
+          When you talk. When you do silly things.
+          Whatever you do — you look cute. Every. Single. Time.
+          And ordinary days? You make them feel expensive.
+          When you order food for me online — I feel so cared for.
+          You know my mood. You know my taste. You know me.
+          And that funny thing I love forever: when we eat together and I finish first…
+          you quietly give me food from your side.
+          It’s small. It’s funny. It’s the sweetest thing in the world.
+          Also — our dhaba nights? <em>Kaju paneer forever</em>.
+          Then waffles, faluda, ice cream… teasing, sharing, laughing.
+          That’s us. That’s happiness.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════ Special day ═══════ -->
+    <section class="story-section" id="section-special">
+      <div class="story-card">
+        <div class="section-emoji">✨</div>
+        <h2 class="section-title">And today… it’s our day</h2>
+        <p class="section-text">
+          Today is not just a date on the calendar.
+          It’s the day I found the courage to ask…
+          and you gave me the softest, bravest “yes”.
+          Happy Anniversary, Trisha.
+          Thank you for choosing me — <em>online, offline, and every day after</em>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════ Video 3 ═══════ -->
+    <section class="story-section video-section" id="section-video3">
+      <div class="video-card reveal-item">
+        <h2 class="video-title">Bakchod Vlogers 😂😎</h2>
+        <div class="video-wrapper video-compact">
+          <video src="assets/video/meet4.mp4" muted loop playsinline preload="metadata" class="story-video" data-autoplay data-trim-end="5"></video>
+          <div class="video-play-overlay" data-target="video">
+            <span class="play-icon">▶</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ Photo grid 4 ═══════ -->
+    <section class="story-section photo-grid-section" id="section-grid4">
+      <div class="photo-grid-container">
+        <h2 class="photo-grid-title">Soft Naughy Moments🤤💋</h2>
+        <div class="photo-grid grid-3">
+          <div class="photo-grid-item reveal-item" data-delay="0">
+            <img src="assets/images/lm1.jpg" alt="Our moment" loading="lazy" />
+            <div class="photo-shine"></div>
+          </div>
+          <div class="photo-grid-item reveal-item" data-delay="150">
+            <img src="assets/images/lm2.jpg" alt="Our moment" loading="lazy" />
+            <div class="photo-shine"></div>
+          </div>
+          <div class="photo-grid-item reveal-item" data-delay="300">
+            <img src="assets/images/lm4.jpg" alt="Our moment" loading="lazy" />
+            <div class="photo-shine"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ Timer ═══════ -->
+    <section class="timer-section" id="section-timer">
+      <h2 class="timer-title">We’ve been us for… 💜</h2>
+      <div class="timer-container">
+        <div class="timer-block">
+          <div class="timer-value" id="timer-days">0</div>
+          <div class="timer-label">days</div>
+        </div>
+        <div class="timer-block">
+          <div class="timer-value" id="timer-hours">0</div>
+          <div class="timer-label">hours</div>
+        </div>
+        <div class="timer-block">
+          <div class="timer-value" id="timer-mins">0</div>
+          <div class="timer-label">mins</div>
+        </div>
+        <div class="timer-block">
+          <div class="timer-value" id="timer-secs">0</div>
+          <div class="timer-label">secs</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ FINALE ═══════ -->
+    <section class="story-section final-section" id="section-final">
+      <div class="final-content">
+        <div class="final-photo-wrapper reveal-item">
+          <img src="assets/images/avatar.jpg" alt="Us now" class="final-photo" loading="eager" />
+          <div class="final-photo-glow"></div>
+        </div>
+        <div class="final-heart">💖</div>
+        <h2 class="final-title">Happy Anniversary, my Trisha&nbsp;❤️</h2>
+        <p class="final-message">
+          I love you.<br>
+          Not in a casual way. Not in a temporary way.<br><br>
+          I love the way you care.<br>
+          I love the way you feel everything so deeply.<br>
+          I love your cuteness you don’t even notice.<br>
+          I love our calls, our waits, our first shy hug,<br>
+          our theatre kiss, our dhaba dinners,<br>
+          and every “take this from my plate” moment.<br><br>
+          You are my favourite person.<br>
+          My peace. My chaos. My home.<br><br>
+          Today, tomorrow, and every forever I get with you —<br>
+          I choose you. Again. And again. And again.
+        </p>
+        <p class="final-signature">— forever yours 💜</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Music Toggle -->
+  <button class="music-toggle" id="music-toggle" aria-label="Toggle music">
+    <div class="equalizer">
+      <div class="eq-bar" style="height:8px"></div>
+      <div class="eq-bar" style="height:14px"></div>
+      <div class="eq-bar" style="height:5px"></div>
+      <div class="eq-bar" style="height:11px"></div>
+    </div>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
