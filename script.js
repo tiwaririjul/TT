@@ -399,49 +399,58 @@ document.addEventListener('DOMContentLoaded', () => {
   const loadingPercent = document.getElementById('loading-percent');
 
   function preloadAllMedia(onComplete) {
-    const imageSrcs = [
-      'assets/images/we_основной.png',
-      'assets/images/we1.jpg',  'assets/images/we2.jpg',  'assets/images/we3.jpg',
-      'assets/images/we4.jpg',  'assets/images/we5.jpg',  'assets/images/we6.JPG',
-      'assets/images/we7.jpg',  'assets/images/we8.jpg',  'assets/images/we9.jpg',
-      'assets/images/we10.jpg', 'assets/images/we11.jpg', 'assets/images/we12.jpg',
-      'assets/images/we.jpg',   'assets/images/we_last.jpg'
-    ];
-    const videoEls = Array.from(document.querySelectorAll('.story-video'));
+    // Collect every media src actually used on the page (keeps preload in sync with HTML)
+    const imageSrcs = [...new Set(
+      Array.from(document.querySelectorAll('img[src]'))
+        .map(img => img.getAttribute('src'))
+        .filter(Boolean)
+    )];
 
-    const total = imageSrcs.length + videoEls.length;
+    const videoEls = Array.from(document.querySelectorAll('video[src], video source[src]'))
+      .map(el => (el.tagName === 'VIDEO' ? el : el.parentElement))
+      .filter((el, i, arr) => el && arr.indexOf(el) === i);
+
+    const audioEls = Array.from(document.querySelectorAll('audio'));
+
+    const total = imageSrcs.length + videoEls.length + audioEls.length;
     let loaded = 0;
+
+    function finish() {
+      setTimeout(() => {
+        loadingScreen.classList.add('fade-out');
+        setTimeout(() => {
+          loadingScreen.classList.remove('active', 'fade-out');
+          loadingScreen.style.display = 'none';
+          onComplete();
+        }, 800);
+      }, 300);
+    }
 
     function tick() {
       loaded++;
-      const pct = Math.round((loaded / total) * 100);
+      const pct = total === 0 ? 100 : Math.round((loaded / total) * 100);
       loadingBar.style.width = pct + '%';
       loadingPercent.textContent = pct + '%';
-      if (loaded >= total) {
-        // Все загружено — плавно скрываем
-        setTimeout(() => {
-          loadingScreen.classList.add('fade-out');
-          setTimeout(() => {
-            loadingScreen.classList.remove('active', 'fade-out');
-            loadingScreen.style.display = 'none';
-            onComplete();
-          }, 800);
-        }, 300);
-      }
+      if (loaded >= total) finish();
     }
 
-    // Загрузка фото
+    if (total === 0) {
+      finish();
+      return;
+    }
+
+    // Preload images used in the page
     imageSrcs.forEach(src => {
       const img = new Image();
-      img.onload  = tick;
-      img.onerror = tick; // не блокируем если файл не найден
+      img.onload = tick;
+      img.onerror = tick;
       img.src = src;
     });
 
-    // Загрузка видео (ждём canplaythrough)
+    // Preload story videos
     videoEls.forEach(video => {
       video.preload = 'auto';
-      if (video.readyState >= 3) { // уже готово
+      if (video.readyState >= 3) {
         tick();
         return;
       }
@@ -453,6 +462,23 @@ document.addEventListener('DOMContentLoaded', () => {
       video.addEventListener('canplaythrough', onReady, { once: true });
       video.addEventListener('error', onReady, { once: true });
       video.load();
+    });
+
+    // Preload background music
+    audioEls.forEach(audioEl => {
+      audioEl.preload = 'auto';
+      if (audioEl.readyState >= 3) {
+        tick();
+        return;
+      }
+      const onReady = () => {
+        audioEl.removeEventListener('canplaythrough', onReady);
+        audioEl.removeEventListener('error', onReady);
+        tick();
+      };
+      audioEl.addEventListener('canplaythrough', onReady, { once: true });
+      audioEl.addEventListener('error', onReady, { once: true });
+      audioEl.load();
     });
   }
 
